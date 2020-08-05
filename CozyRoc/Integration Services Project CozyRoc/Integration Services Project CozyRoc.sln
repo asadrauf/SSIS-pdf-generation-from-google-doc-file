@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.1169
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{159641D6-6404-4A2A-AE62-294DE0FE8301}") = "Integration Services Project CozyRoc", "Integration Services Project CozyRoc\Integration Services Project CozyRoc.dtproj", "{51A5F154-0865-4EFD-9A2D-5F77D3F3E7E4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Development|Default = Development|Default
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{51A5F154-0865-4EFD-9A2D-5F77D3F3E7E4}.Development|Default.ActiveCfg = Development
+		{51A5F154-0865-4EFD-9A2D-5F77D3F3E7E4}.Development|Default.Build.0 = Development
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8B29F38B-BC51-47B9-B863-B34229D0C735}
+	EndGlobalSection
+EndGlobal

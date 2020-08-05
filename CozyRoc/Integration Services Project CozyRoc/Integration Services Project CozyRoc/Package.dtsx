@@ -1,0 +1,1643 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="7/19/2020 4:35:44 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="ARAUF-PC"
+  DTS:CreatorName="ARAUF-PC\19197"
+  DTS:DTSID="{1078B738-77AC-497E-B0B3-9244FFF258B5}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="14.0.3002.113"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Package"
+  DTS:PackageType="5"
+  DTS:VersionBuild="244"
+  DTS:VersionGUID="{A0926157-73AD-443F-9793-624C783EC4E6}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Doc2pdf.pdf]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{661A73FC-5867-40D0-A770-BB8CDCB38702}"
+      DTS:ObjectName="Doc2pdf.pdf">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:FileUsageType="1"
+          DTS:ConnectionString="D:\CozyRoc\ReciveFiles\Doc2pdf.pdf" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[REST Connection Manager 1]"
+      DTS:CreationName="REST"
+      DTS:DTSID="{6B1BC558-252B-4D26-A741-948348B5B4B0}"
+      DTS:ObjectName="REST Connection Manager 1">
+      <DTS:ObjectData>
+        <ConnectionManager
+          ConnectionString="Configuration=;ServerHost=https://www.googleapis.com/drive/v3;Authentication=;TokenFile=D:\CozyRoc\connToken.xml;ServerTimeout=100;LogFile=;RequestsPerSecond=5;Retry=0;RetryPause=30;RetryError=;RetainSameConnection=True;ProxyHost=;ProxyPort=0;ProxyUser=;"
+          EmbeddedConfiguration="&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-16&quot;?&gt;&#xA;&lt;ConnectionManager xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; Name=&quot;GDriveRestConn&quot; RuntimeVersion=&quot;&quot; Help=&quot;https://www.googleapis.com/drive/v3&quot; xmlns=&quot;http://www.cozyroc.com/schema/rcm-config-1.0.xsd&quot;&gt;&#xA;  &lt;Service EndPoint=&quot;https://www.googleapis.com/drive/v3&quot; /&gt;&#xA;  &lt;Authentication Name=&quot;Google OAuth2&quot;&gt;&#xA;    &lt;Documentation /&gt;&#xA;    &lt;User&gt;&#xA;      &lt;Parameter Name=&quot;Scope&quot; Default=&quot;https://www.googleapis.com/auth/drive https://www.googleapis.com/auth/drive.file https://www.googleapis.com/auth/drive.readonly https://www.googleapis.com/auth/drive.appdata https://www.googleapis.com/auth/drive.photos.readonly&quot;&gt;&#xA;        &lt;Documentation&gt;https://www.googleapis.com/auth/drive https://www.googleapis.com/auth/drive.file https://www.googleapis.com/auth/drive.readonly https://www.googleapis.com/auth/drive.appdata https://www.googleapis.com/auth/drive.photos.readonly&lt;/Documentation&gt;&#xA;      &lt;/Parameter&gt;&#xA;    &lt;/User&gt;&#xA;    &lt;Test Url=&quot;https://www.googleapis.com/drive/v3/files/1fAfwIkcicSK-NKgc2dMKpN5QoUuSeLQi27yjPpUMops/export?mimeType=application/pdf&quot; /&gt;&#xA;    &lt;Token Url=&quot;{{=OAuth2.sign_in_url}}&quot; Result=&quot;{{=response.access_token}}&quot;&gt;&#xA;      &lt;Parameters&gt;&#xA;        &lt;Parameter Name=&quot;response_type&quot; Value=&quot;{{=OAuth2.sign_in_response_type}}&quot; /&gt;&#xA;        &lt;Parameter Name=&quot;client_id&quot; Value=&quot;{{=OAuth2.client_id}}&quot; /&gt;&#xA;        &lt;Parameter Name=&quot;redirect_uri&quot; Value=&quot;{{=OAuth2.redirect_uri}}&quot; /&gt;&#xA;        &lt;Parameter Name=&quot;scope&quot; Value=&quot;{{=token.Scope}}&quot; /&gt;&#xA;      &lt;/Parameters&gt;&#xA;      &lt;Authorized Id=&quot;{{=OAuth2.redirect_uri}}&quot; Result=&quot;{{=&amp;#xD;&amp;#xA;&amp;#x9;&amp;#x9;&amp;#x9;&amp;#x9;connection.execute({&amp;#xD;&amp;#xA;&amp;#x9;&amp;#x9;&amp;#x9;&amp;#x9;&amp;#x9;url: OAuth2.authorization_url,&amp;#xD;&amp;#xA;&amp;#x9;&amp;#x9;&amp;#x9;&amp;#x9;&amp;#x9;method: OAuth2.authorization_method,&amp;#xD;&amp;#xA;&amp;#x9;&amp;#x9;&amp;#x9;&amp;#x9;&amp;#x9;parameters: {&amp;#xD;&amp;#xA;&amp;#x9;&amp;#x9;&amp;#x9;&amp;#x9;&amp;#x9;&amp;#x9;code: response.code,&amp;#xD;&amp;#xA;&amp;#x9;&amp;#x9;&amp;#x9;&amp;#x9;&amp;#x9;&amp;#x9;grant_type: OAuth2.grant_type,&amp;#xD;&amp;#xA;&amp;#x9;&amp;#x9;&amp;#x9;&amp;#x9;&amp;#x9;&amp;#x9;client_id: OAuth2.client_id,&amp;#xD;&amp;#xA;&amp;#x9;&amp;#x9;&amp;#x9;&amp;#x9;&amp;#x9;&amp;#x9;client_secret: OAuth2.client_secret,&amp;#xD;&amp;#xA;&amp;#x9;&amp;#x9;&amp;#x9;&amp;#x9;&amp;#x9;&amp;#x9;redirect_uri: OAuth2.redirect_uri,&amp;#xD;&amp;#xA;&amp;#x9;&amp;#x9;&amp;#x9;&amp;#x9;&amp;#x9;&amp;#x9;scope: token.Scope&amp;#xD;&amp;#xA;&amp;#x9;&amp;#x9;&amp;#x9;&amp;#x9;} })&amp;#xD;&amp;#xA;&amp;#x9;&amp;#x9;&amp;#x9;}}&quot;&gt;&#xA;        &lt;Documentation&gt;https://developers.google.com/identity/protocols/OAuth2WebServer&lt;/Documentation&gt;&#xA;      &lt;/Authorized&gt;&#xA;      &lt;Refresh Url=&quot;{{=OAuth2.refresh_token_url}}&quot; Method=&quot;POST&quot; Result=&quot;{{=response.refresh_token}}&quot; Expiration=&quot;{{=Date.now() + (response.expires_in - 300) * 1000}}&quot;&gt;&#xA;        &lt;Documentation&gt;https://developers.google.com/identity/protocols/OAuth2WebServer#refresh&lt;/Documentation&gt;&#xA;        &lt;Parameters&gt;&#xA;          &lt;Parameter Name=&quot;client_id&quot; Value=&quot;{{=OAuth2.client_id}}&quot; /&gt;&#xA;          &lt;Parameter Name=&quot;redirect_uri&quot; Value=&quot;{{=OAuth2.redirect_uri}}&quot; /&gt;&#xA;          &lt;Parameter Name=&quot;refresh_token&quot; Value=&quot;{{=token.Refresh}}&quot; /&gt;&#xA;          &lt;Parameter Name=&quot;grant_type&quot; Value=&quot;refresh_token&quot; /&gt;&#xA;          &lt;Parameter Name=&quot;scope&quot; Value=&quot;{{=token.Scope}}&quot; /&gt;&#xA;          &lt;Parameter Name=&quot;client_secret&quot; Value=&quot;{{=OAuth2.client_secret}}&quot; /&gt;&#xA;        &lt;/Parameters&gt;&#xA;      &lt;/Refresh&gt;&#xA;    &lt;/Token&gt;&#xA;    &lt;Parameters&gt;&#xA;      &lt;Parameter Name=&quot;Authorization&quot; Value=&quot;Bearer {{=token.Access}}&quot; Type=&quot;HttpHeader&quot; /&gt;&#xA;    &lt;/Parameters&gt;&#xA;  &lt;/Authentication&gt;&#xA;  &lt;Resources&gt;&#xA;    &lt;Template&gt;&#xA;      &lt;Field Name=&quot;ShortText&quot; DataType=&quot;DT_WSTR&quot; Length=&quot;255&quot; /&gt;&#xA;      &lt;Field Name=&quot;LongText&quot; DataType=&quot;DT_WSTR&quot; Length=&quot;1000&quot; /&gt;&#xA;      &lt;Field Name=&quot;DateTime&quot; DataType=&quot;DT_DBTIMESTAMP&quot; /&gt;&#xA;      &lt;Field Name=&quot;Date&quot; DataType=&quot;DT_DBDATE&quot; /&gt;&#xA;      &lt;Resource Name=&quot;Base&quot;&gt;&#xA;        &lt;Read Result=&quot;{{=response}}&quot;&gt;&#xA;          &lt;Parameters&gt;&#xA;            &lt;Parameter Name=&quot;_includeUserParameters&quot; Value=&quot;{{=parameters}}&quot; /&gt;&#xA;          &lt;/Parameters&gt;&#xA;        &lt;/Read&gt;&#xA;        &lt;Create Method=&quot;POST&quot;&gt;&#xA;          &lt;Parameters&gt;&#xA;            &lt;Parameter Name=&quot;_includeUserParameters&quot; Value=&quot;{{=parameters}}&quot; /&gt;&#xA;            &lt;Parameter Name=&quot;application/json&quot; Value=&quot;{{=item}}&quot; Type=&quot;Body&quot; /&gt;&#xA;          &lt;/Parameters&gt;&#xA;        &lt;/Create&gt;&#xA;        &lt;Update Method=&quot;PUT&quot;&gt;&#xA;          &lt;Parameters&gt;&#xA;            &lt;Parameter Name=&quot;_includeUserParameters&quot; Value=&quot;{{=parameters}}&quot; /&gt;&#xA;            &lt;Parameter Name=&quot;application/json&quot; Value=&quot;{{=item}}&quot; Type=&quot;Body&quot; /&gt;&#xA;          &lt;/Parameters&gt;&#xA;        &lt;/Update&gt;&#xA;        &lt;Delete Method=&quot;DELETE&quot; /&gt;&#xA;      &lt;/Resource&gt;&#xA;    &lt;/Template&gt;&#xA;  &lt;/Resources&gt;&#xA;  &lt;Script&gt;&#xA;    &lt;Module Name=&quot;Main&quot;&gt;&lt;![CDATA[&#xA;require(&quot;underscore&quot;);&#xA;&#xA;&#x9;&#x9;]]&gt;&lt;/Module&gt;&#xA;    &lt;Module Name=&quot;Google OAuth2&quot;&gt;&lt;![CDATA[&#xA;var OAuth2 = {&#xA;&#x9;client_id: &quot;822955360543-0k56u5vu2ssvivg9qno2oisml9322esj.apps.googleusercontent.com&quot;,&#xA;&#x9;client_secret: &quot;Em0SYyJ09-NgLvhyT2hPOlfY&quot;,&#xA;&#x9;sign_in_url: &quot;https://accounts.google.com/o/oauth2/auth&quot;,&#xA;&#x9;sign_in_response_type: &quot;code&quot;,&#xA;&#x9;authorization_url: &quot;https://accounts.google.com/o/oauth2/token&quot;,&#xA;&#x9;authorization_method: &quot;POST&quot;,&#xA;&#x9;redirect_uri: &quot;http://localhost&quot;,&#xA;&#x9;grant_type: &quot;authorization_code&quot;,&#xA;&#x9;refresh_token_url: &quot;https://www.googleapis.com/oauth2/v4/token&quot;&#xA;};&#xA;&#xA;&#x9;&#x9;]]&gt;&lt;/Module&gt;&#xA;  &lt;/Script&gt;&#xA;&lt;/ConnectionManager&gt;">
+          <TokenPassword
+            Sensitive="1" xmlns="www.microsoft.com/SqlServer/Dts"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAkWoNLsa2Q0K9hQ0nG+9vwQAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAAAgnW233AM2eOCnaK4l0I0gLdNigcl3jARfKGiSQ9Op2QAAAAAOgAAAAAIAACAAAACKVq/8Pe+twfUswK1UrOWDJ0smGYtP3XUidtsmtYWgxxAAAACyLI73Ovnbwp0ZV8s19BoOQAAAAJPTWI84p7l1zht8EUnBz2BVC9sfPqbVBDpX3upbHN0Tyq2znatq6zugk5oLr9Q21voZfd11lCSdLu+10me+QHg</TokenPassword>
+        </ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[REST Connection Manager 2]"
+      DTS:CreationName="REST"
+      DTS:DTSID="{AB88362D-A03E-44D4-AE8C-48001DC6AC87}"
+      DTS:ObjectName="REST Connection Manager 2">
+      <DTS:ObjectData>
+        <ConnectionManager
+          ConnectionString="Configuration=Google Drive.rcm;ServerHost=https://www.googleapis.com/drive/v3;Authentication=;TokenFile=D:\CozyRoc\ConnUploadToken.xml;ServerTimeout=100;LogFile=;RequestsPerSecond=5;Retry=0;RetryPause=30;RetryError=;RetainSameConnection=True;ProxyHost=;ProxyPort=0;ProxyUser=;">
+          <TokenPassword
+            Sensitive="1" xmlns="www.microsoft.com/SqlServer/Dts"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAkWoNLsa2Q0K9hQ0nG+9vwQAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAAC+t6x1fd5chxWCHhcYD9qImZpyMGP7Va1oFh1IAH9OygAAAAAOgAAAAAIAACAAAAC2eJYmvf3zv2Dx5VQiQtNAliXE2SNeA+qe/fRUp44juhAAAADT87vPOlfSTraqJf3Y76WOQAAAAGI2QjETod5RGNnjqmC0WFL2CALWqiRZqwr/NOdpxANEr2Al0FZ+AWwOVfIK0PHw7IhDoY97C/r91qX8GnKNmng</TokenPassword>
+        </ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:PackageParameters>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="11"
+      DTS:DTSID="{06DC661A-DBF8-4CD9-92B6-82715C41CF29}"
+      DTS:ObjectName="DataFlowTaskPlus_AutoAdjustBufferSize">
+      <DTS:Property
+        DTS:DataType="11"
+        DTS:Name="ParameterValue">0</DTS:Property>
+    </DTS:PackageParameter>
+  </DTS:PackageParameters>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{C3035CE8-DD1E-40B7-A83F-8A038F47623C}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="copyDoc">
+      <DTS:VariableValue
+        DTS:DataType="8"
+        xml:space="preserve"></DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{54331D58-ED93-4E1E-BE24-325CFFDFB338}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="name">
+      <DTS:VariableValue
+        DTS:DataType="8"
+        xml:space="preserve"></DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{DDCD97A4-0756-4FAA-9DA4-9B0FE772E0F6}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="Variable">
+      <DTS:VariableValue
+        DTS:DataType="8"
+        xml:space="preserve"></DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{36EC5B2C-EBF4-49D9-93FE-DBD30A6F3EBF}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="Variable1">
+      <DTS:VariableValue
+        DTS:DataType="8"
+        xml:space="preserve"></DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{6747D22B-7157-4FDA-8974-A7D6FCB8FEFE}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="VarNewTemplateID">
+      <DTS:VariableValue
+        DTS:DataType="8"
+        xml:space="preserve"></DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{806CFA08-4257-4C7D-A38F-55689CE56E43}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="VarObjType">
+      <DTS:VariableValue
+        DTS:DataSubType="ManagedSerializable"
+        DTS:DataType="13">
+        <SOAP-ENV:Envelope xmlns:clr="http://schemas.microsoft.com/soap/encoding/clr/1.0" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
+          <SOAP-ENV:Body>
+            <xsd:anyType
+              id="ref-1"></xsd:anyType>
+          </SOAP-ENV:Body>
+        </SOAP-ENV:Envelope>
+      </DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\JavaScript Task"
+      DTS:CreationName="CozyRoc.JavaScriptTask"
+      DTS:Description="JavaScript Task"
+      DTS:DTSID="{B39B5984-F8D6-4E59-B658-768536051C39}"
+      DTS:ExecutableType="CozyRoc.JavaScriptTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="JavaScript Task"
+      DTS:TaskContact="JavaScript Task; COZYROC LLC; SSIS+; © 2006-2020 COZYROC LLC; All Rights Reserved; http://www.cozyroc.com/;"
+      DTS:ThreadHint="0">
+      <DTS:Variables>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:DTSID="{45284A8B-45F0-46F1-9C4A-2B124611232A}"
+          DTS:IncludeInDebugDump="2345"
+          DTS:Namespace="User"
+          DTS:ObjectName="_Body">
+          <DTS:VariableValue
+            DTS:DataType="8">{
+  "name": "genFromTemplate"
+}</DTS:VariableValue>
+        </DTS:Variable>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:DTSID="{FD2E52AC-AF85-4D0C-AF08-FE29607AC018}"
+          DTS:IncludeInDebugDump="2345"
+          DTS:Namespace="User"
+          DTS:ObjectName="_ContentType">
+          <DTS:VariableValue
+            DTS:DataType="8">application/json</DTS:VariableValue>
+        </DTS:Variable>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:DTSID="{C7CBDEFC-7FFB-4E37-8458-7635A0BC5A7C}"
+          DTS:IncludeInDebugDump="6789"
+          DTS:Namespace="User"
+          DTS:ObjectName="_IsBodyFile">
+          <DTS:VariableValue
+            DTS:DataType="11">0</DTS:VariableValue>
+        </DTS:Variable>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:DTSID="{2F08F8FF-60F2-4733-A773-472DC5CEF7EC}"
+          DTS:IncludeInDebugDump="6789"
+          DTS:Namespace="User"
+          DTS:ObjectName="_IsResultFile">
+          <DTS:VariableValue
+            DTS:DataType="11">0</DTS:VariableValue>
+        </DTS:Variable>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:DTSID="{E8F0CDB0-6657-4631-A59C-18DA0C94E759}"
+          DTS:IncludeInDebugDump="2345"
+          DTS:Namespace="User"
+          DTS:ObjectName="_Method">
+          <DTS:VariableValue
+            DTS:DataType="8">POST</DTS:VariableValue>
+        </DTS:Variable>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:DTSID="{35E99CD4-5D62-4F47-A3D9-93AF3FB4794B}"
+          DTS:IncludeInDebugDump="2345"
+          DTS:Namespace="User"
+          DTS:ObjectName="_Parameters">
+          <DTS:VariableValue
+            DTS:DataType="8"
+            xml:space="preserve"></DTS:VariableValue>
+        </DTS:Variable>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:DTSID="{E7C51AB3-35A1-4060-B408-0D1A61D3F2E8}"
+          DTS:IncludeInDebugDump="2345"
+          DTS:Namespace="User"
+          DTS:ObjectName="_RestConnection">
+          <DTS:VariableValue
+            DTS:DataType="8">{6B1BC558-252B-4D26-A741-948348B5B4B0}</DTS:VariableValue>
+        </DTS:Variable>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:DTSID="{E1B3CDC0-887C-4EE6-BCD0-89CB4029C8FB}"
+          DTS:IncludeInDebugDump="2345"
+          DTS:Namespace="User"
+          DTS:ObjectName="_ResultVariable">
+          <DTS:VariableValue
+            DTS:DataType="8">User::VarNewTemplateID</DTS:VariableValue>
+        </DTS:Variable>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:DTSID="{EBDE803B-5BB2-4F67-AAED-07908FB6DA0C}"
+          DTS:IncludeInDebugDump="2345"
+          DTS:Namespace="User"
+          DTS:ObjectName="_Transform">
+          <DTS:VariableValue
+            DTS:DataType="8">function transform(content) { return content.id; }</DTS:VariableValue>
+        </DTS:Variable>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:DTSID="{05476092-D249-48D1-9740-C8071C199C35}"
+          DTS:IncludeInDebugDump="2345"
+          DTS:Namespace="User"
+          DTS:ObjectName="_Url">
+          <DTS:VariableValue
+            DTS:DataType="8">https://www.googleapis.com/drive/v3/files/1fAfwIkcicSK-NKgc2dMKpN5QoUuSeLQi27yjPpUMops/copy</DTS:VariableValue>
+        </DTS:Variable>
+      </DTS:Variables>
+      <DTS:ObjectData>
+        <JavaScriptData
+          Expression=""
+          Validation=""
+          PackageConnection=""
+          JavaScriptTaskLink="">
+          <JavaScriptCode><![CDATA[// Documentation: http://www.cozyroc.com/ssis/script-rest-web-service-request-task
+
+/* Copyright (c) 2006-2019 COZYROC LLC
+ 
+ Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated 
+ documentation files (the "Software"), to deal in the Software without restriction, including without limitation 
+ the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and 
+ to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+ 
+ The above copyright notice and this permission notice shall be included in all copies or substantial portions of the 
+ Software.
+ 
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE 
+ WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR 
+ COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR 
+ OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+*/
+
+require("underscore.js");
+require("validation.js");
+require("utils.js");
+
+task.parameters = {
+    RestConnection: {
+        description: "Optional REST connection for specifying authentication method, base URL, proxy and other settings.",
+        category: "Request",
+        type: { id: "connection", connectionTypes: "REST" },
+        order: 1
+    },
+    Method: {
+        description: "The request method.",
+        category: "Request",
+        type: { id: "list", values: ["GET", "POST", "PUT", "DELETE", "HEAD", "OPTIONS", "PATCH"] },
+        value: "GET",
+        order: 3
+    },
+    Url: {
+        description: "The request URL.",
+        category: "Request",
+        validate: validation.required,
+        order: 2
+    },
+    Cookies: {
+        description: "The request cookies. Syntax is [name]=[value]. Each item in on a new line. Alternatively, a 'Cookie' header can be specified directly in the 'Headers' parameter.",
+        category: "Request",
+        type: {
+            id: "text-editor",
+            title: "Enter cookies.",
+            format: "plain"
+        },
+        order: 4,
+        optional: true
+    },
+    Headers: {
+        description: "The request headers. Syntax is [name]:[value]. Multiple headers are separated with a newline.",
+        category: "Request",
+        type: {
+            id: "text-editor",
+            title: "Enter headers.",
+            format: "plain"
+        },
+        order: 5
+    },
+    Query: {
+        description: "The request query string parameters. Syntax is [name]=[value]. Multiple query string parameters are separated with newline.",
+        category: "Request",
+        type: {
+            id: "text-editor",
+            title: "Enter query string parameters.",
+            format: "plain"
+        },
+        order: 6
+    },
+    Parameters: {
+        description: "The request body parameters. Syntax is [name]=[value]. Multiple body parameters are separated with newline. When used the HTTP Content-Type becomes \"application/x-www-form-urlencoded\".",
+        category: "Request",
+        type: {
+            id: "text-editor",
+            title: "Enter body parameters.",
+            format: "plain"
+        },
+        order: 7
+    },
+    ContentType: {
+        description: "The Media type of the body of the request. For example: \"text/html\", \"application/json\".",
+        category: "Request",
+        order: 8
+    },
+    IsBodyFile: {
+        description: "Specifies if body is composed from a file.",
+        category: "Request",
+        type: "boolean",
+        order: 9,
+        optional: true
+    },
+    Body: {
+        description: "The request body.",
+        category: "Request",
+        type: {
+            id: "text-editor",
+            title: "Enter body.",
+            format: "plain"
+        },
+        visible: function () {
+            return !this.parameters.IsBodyFile.value;
+        },
+        depends: "IsBodyFile",
+        order: 10
+    },
+    BodyFile: {
+        description: "File to use as request body.",
+        category: "Request",
+        type: "file-local",
+        visible: function () {
+            return this.parameters.IsBodyFile.value;
+        },
+        depends: "IsBodyFile",
+        order: 10
+    },
+    Files: {
+        description: "Files to upload.",
+        category: "Request",
+        type: {
+            id: "file-local",
+            multiple: "true"
+        },
+        order: 11
+    },
+    Transform: {
+        description: "Specify transformation. underscore.js functions are available by default.",
+        category: "Response",
+        type: {
+            id: "text-editor",
+            title: "Enter transformation function.",
+            format: "json"
+        },
+        value: "function transform(content) { return content; }",
+        validate: validation.required,
+        order: 1,
+        optional: true
+    },
+    IsResultFile: {
+        description: "Specifies if result is written in a file.",
+        category: "Response",
+        type: "boolean",
+        order: 2,
+        optional: true
+    },
+    ResultVariable: {
+        description: "The package variable to store result.",
+        category: "Response",
+        type: "variable",
+        visible: function () {
+            return !this.parameters.IsResultFile.value;
+        },
+        depends: "IsResultFile",
+        order: 3
+    },
+    ResultFile: {
+        description: "The file to store result.",
+        category: "Response",
+        type: "file-local",
+        visible: function () {
+            return this.parameters.IsResultFile.value;
+        },
+        depends: "IsResultFile",
+        order: 3
+    }
+};
+
+var File = getClrType("System.IO.File");
+
+function getRows(data) {
+    return data.replace("\r\n", "\n").split("\n").filter(function (elem) { return !!elem; });
+}
+
+function getKeyValue(row, delimiter) {
+    try {
+        var delimiterIndex = row.indexOf(delimiter);
+
+        return [row.substring(0, delimiterIndex).trim(), row.substring(delimiterIndex + 1).trim()];
+    }
+    catch (ex) { }
+}
+
+function getObject(variables, strValue, delimiter, parameterName) {
+    var strReplaced = utils.replaceVariableValues(variables, strValue),
+        rows = getRows(strReplaced),
+        result = {};
+
+    for (var i in rows) {
+        var keyValue = getKeyValue(rows[i], delimiter);
+
+        if (!keyValue[0]) {
+            console.error("Parameter " + parameterName + ". There is no key provided in this row: \"" + rows[i] + "\".");
+        }
+
+        if (keyValue)
+            result[keyValue[0]] = keyValue[1];
+    }
+    return result;
+}
+
+function getJSON(variables, strValue) {
+    var strReplaced = utils.replaceVariableValues(variables, strValue);
+    return eval("(" + strReplaced + ")");
+}
+
+task.run = function () {
+    var connection,
+        variables = this.variables;
+
+    if (this.parameters.RestConnection.value) {
+        connection = this.connections[this.parameters.RestConnection.value].acquire();
+        connection.connect();
+    }
+    else {
+        connection = new RestConnection();
+    }
+
+    try {
+        var req = {
+            url: utils.replaceVariableValues(variables, this.parameters.Url.value),
+            method: this.parameters.Method.value
+        };
+
+        if (this.parameters.Cookies.value)
+            req.cookie = getObject(variables, this.parameters.Cookies.value, "=", "Cookies");
+
+        if (this.parameters.Headers.value)
+            req.headers = getObject(variables, this.parameters.Headers.value, ":", "Headers");
+
+        if (this.parameters.Query.value)
+            req.query = getObject(variables, this.parameters.Query.value, "=", "Query");
+
+        if (this.parameters.Parameters.value)
+            req.parameters = getObject(variables, this.parameters.Parameters.value, "=", "Parameters");
+
+        if (!this.parameters.IsBodyFile.value && this.parameters.Body.value) {
+            var testWholeVar = /@\[(.*?)\]/g,
+                rawBody = this.parameters.Body.value,
+                regExInfo = testWholeVar.exec(rawBody);
+
+            if (regExInfo && regExInfo.index === 0 && testWholeVar.lastIndex === rawBody.length) {
+                // The Body parameter contains description of a single variable
+                var value = this.variables[regExInfo[1]].value;
+
+                if (value.constructor.name === "ClrStream") {
+                    // the variable contains a stream
+                    value = value.readAll();
+                }
+                var body = { content: value };
+            }
+            else {
+                body = { content: utils.replaceVariableValues(variables, this.parameters.Body.value) };
+            }
+
+            if (this.parameters.ContentType.value)
+                body.contentType = this.parameters.ContentType.value;
+            req.body = body;
+        }
+
+        if (this.parameters.IsBodyFile.value && this.parameters.BodyFile.value) {
+            tt = this.parameters.BodyFile.value;
+
+            body = { content: File.ReadAllBytes(this.parameters.BodyFile.value) };
+
+            if (this.parameters.ContentType.value)
+                body.contentType = this.parameters.ContentType.value;
+            req.body = body;
+        }
+
+        if (this.parameters.Files.value) {
+            var fileNames = this.parameters.Files.value.split("|"),
+                files = [];
+
+            for (var i in fileNames) {
+                var fileName = fileNames[i],
+                    buff = File.ReadAllBytes(fileName),
+                    fileInfo = { name: fileName, content: buff };
+
+                files.push(fileInfo);
+            }
+
+            req.file = files;
+        }
+
+        var res = connection.execute(req);
+
+        if (!this.parameters.IsResultFile.value && this.parameters.ResultVariable.value ||
+            this.parameters.IsResultFile.value && this.parameters.ResultFile.value) {
+            var transformFunc = getJSON(variables, this.parameters.Transform.value),
+                resTransformed = transformFunc(res);
+
+            if (!resTransformed.byteLength && typeof resTransformed === "object")
+                resTransformed = JSON.stringify(resTransformed);
+            if (!this.parameters.IsResultFile.value && this.parameters.ResultVariable.value) {
+                this.variables[this.parameters.ResultVariable.value].value = resTransformed;
+            }
+            else {
+                if (resTransformed.byteLength) {
+                    File.WriteAllBytes(this.parameters.ResultFile.value, resTransformed);
+                }
+                else {
+                    File.WriteAllText(this.parameters.ResultFile.value, resTransformed + "");
+                }
+            }
+        }
+    }
+    finally {
+        connection.close();
+    }
+};
+]]></JavaScriptCode>
+        </JavaScriptData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Rest API call to Google Drive"
+      DTS:CreationName="CozyRoc.JavaScriptTask"
+      DTS:Description="JavaScript Task"
+      DTS:DTSID="{0A5AA964-F53B-4C54-88BD-D33D56796AF5}"
+      DTS:ExecutableType="CozyRoc.JavaScriptTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Rest API call to Google Drive"
+      DTS:TaskContact="JavaScript Task; COZYROC LLC; SSIS+; © 2006-2020 COZYROC LLC; All Rights Reserved; http://www.cozyroc.com/;"
+      DTS:ThreadHint="0">
+      <DTS:Variables>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:DTSID="{121A0272-D421-4DBF-B602-B0FBC24EE367}"
+          DTS:IncludeInDebugDump="2345"
+          DTS:Namespace="User"
+          DTS:ObjectName="_Body">
+          <DTS:VariableValue
+            DTS:DataType="8">asadrauf</DTS:VariableValue>
+        </DTS:Variable>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:DTSID="{33F61715-FB1A-4435-BF92-E418ADC019D3}"
+          DTS:IncludeInDebugDump="2345"
+          DTS:Namespace="User"
+          DTS:ObjectName="_ContentType">
+          <DTS:VariableValue
+            DTS:DataType="8">application/json</DTS:VariableValue>
+        </DTS:Variable>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:DTSID="{2C4BF4EF-604A-4249-959C-E8C67AD943CC}"
+          DTS:IncludeInDebugDump="2345"
+          DTS:Namespace="User"
+          DTS:ObjectName="_Method">
+          <DTS:VariableValue
+            DTS:DataType="8">GET</DTS:VariableValue>
+        </DTS:Variable>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:DTSID="{27106C7A-0C55-4279-8FF5-C5BBDCF2259F}"
+          DTS:IncludeInDebugDump="2345"
+          DTS:Namespace="User"
+          DTS:ObjectName="_Parameters">
+          <DTS:VariableValue
+            DTS:DataType="8">mimeType=application/pdf
+key=AIzaSyDmuVoE2vKrb0-jo6dvLW7fcum6z6rSl2A</DTS:VariableValue>
+        </DTS:Variable>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:DTSID="{E3AC96FB-FD79-4936-829F-5C11C047EBEB}"
+          DTS:IncludeInDebugDump="2345"
+          DTS:Namespace="User"
+          DTS:ObjectName="_RestConnection">
+          <DTS:VariableValue
+            DTS:DataType="8">{6B1BC558-252B-4D26-A741-948348B5B4B0}</DTS:VariableValue>
+        </DTS:Variable>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:DTSID="{51E822E1-63DA-4159-AAF3-4B2229C132B7}"
+          DTS:IncludeInDebugDump="2345"
+          DTS:Namespace="User"
+          DTS:ObjectName="_ResultVariable">
+          <DTS:VariableValue
+            DTS:DataType="8">User::VarObjType</DTS:VariableValue>
+        </DTS:Variable>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:DTSID="{22FC9CBD-0141-4FCB-B85A-7348473AF3FC}"
+          DTS:IncludeInDebugDump="2345"
+          DTS:Namespace="User"
+          DTS:ObjectName="_TargetFile">
+          <DTS:VariableValue
+            DTS:DataType="8">{661A73FC-5867-40D0-A770-BB8CDCB38702}</DTS:VariableValue>
+        </DTS:Variable>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:DTSID="{86F285E8-3ACD-4492-9106-5EACF7CABD88}"
+          DTS:IncludeInDebugDump="2345"
+          DTS:Namespace="User"
+          DTS:ObjectName="_Transform">
+          <DTS:VariableValue
+            DTS:DataType="8">function transform(content) { return content; }</DTS:VariableValue>
+        </DTS:Variable>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:DTSID="{8A5FC828-E62A-4ACC-8B24-1792D323168A}"
+          DTS:IncludeInDebugDump="2345"
+          DTS:Namespace="User"
+          DTS:ObjectName="_Url">
+          <DTS:VariableValue
+            DTS:DataType="8">https://www.googleapis.com/drive/v3/files/1fAfwIkcicSK-NKgc2dMKpN5QoUuSeLQi27yjPpUMops/export?mimeType=application/pdf&amp;key=AIzaSyDmuVoE2vKrb0-jo6dvLW7fcum6z6rSl2A</DTS:VariableValue>
+        </DTS:Variable>
+      </DTS:Variables>
+      <DTS:ObjectData>
+        <JavaScriptData
+          Expression=""
+          Validation=""
+          PackageConnection=""
+          JavaScriptTaskLink="">
+          <JavaScriptCode><![CDATA[// Documentation: http://www.cozyroc.com/ssis/script-rest-web-service-request-task
+
+/* Copyright (c) 2006-2019 COZYROC LLC
+ 
+ Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated 
+ documentation files (the "Software"), to deal in the Software without restriction, including without limitation 
+ the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and 
+ to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+ 
+ The above copyright notice and this permission notice shall be included in all copies or substantial portions of the 
+ Software.
+ 
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE 
+ WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR 
+ COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR 
+ OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+*/
+
+require("underscore.js");
+require("validation.js");
+require("utils.js");
+
+var DOWNLOAD_FILE = "download file";
+
+task.parameters = {
+    RestConnection: {
+        description: "Optional REST connection for specifying authentication method, base URL, proxy and other settings.",
+        category: "Request",
+        type: { id: "connection", connectionTypes: "REST" },
+        order: 1
+    },
+    Method: {
+        description: "The request method.",
+        category: "Request",
+        type: { id: "list", values: ["GET", "POST", "PUT", "DELETE", "HEAD", "OPTIONS", "PATCH"] },
+        value: "GET",
+        order: 3
+    },
+    Url: {
+        description: "The request URL.",
+        category: "Request",
+        validate: validation.required,
+        order: 2
+    },
+    Cookies: {
+        description: "The request cookies. Syntax is [name]=[value]. Each item in on a new line. Alternatively, a 'Cookie' header can be specified directly in the 'Headers' parameter.",
+        category: "Request",
+        type: {
+            id: "text-editor",
+            title: "Enter cookies.",
+            format: "plain"
+        },
+        order: 4,
+        optional: true
+    },
+    Headers: {
+        description: "The request headers. Syntax is [name]:[value]. Multiple headers are separated with a newline.",
+        category: "Request",
+        type: {
+            id: "text-editor",
+            title: "Enter headers.",
+            format: "plain"
+        },
+        order: 5
+    },
+    Query: {
+        description: "The request query string parameters. Syntax is [name]=[value]. Multiple query string parameters are separated with newline.",
+        category: "Request",
+        type: {
+            id: "text-editor",
+            title: "Enter query string parameters.",
+            format: "plain"
+        },
+        order: 6
+    },
+    Parameters: {
+        description: "The request body parameters. Syntax is [name]=[value]. Multiple body parameters are separated with newline. When used the HTTP Content-Type becomes \"application/x-www-form-urlencoded\".",
+        category: "Request",
+        type: {
+            id: "text-editor",
+            title: "Enter body parameters.",
+            format: "plain"
+        },
+        order: 7
+    },
+    ContentType: {
+        description: "The Media type of the body of the request. For example: \"text/html\", \"application/json\".",
+        category: "Request",
+        order: 8
+    },
+    Body: {
+        description: "The request body.",
+        category: "Request",
+        type: {
+            id: "text-editor",
+            title: "Enter body.",
+            format: "plain"
+        },
+        order: 9
+    },
+    Files: {
+        description: "Files to upload.",
+        category: "Request",
+        type: {
+            id: "file-local",
+            multiple: "true"
+        },
+        order: 10
+    },
+    TargetFile: {
+        description: "Select connection to target file.", category: "Settings",
+        type: { id: "connection", connectionTypes: "FILE" }, order: 4,
+        validate: validation.required
+    },
+    Transform: {
+        description: "Specify transformation. underscore.js functions are available by default.",
+        category: "Response",
+        type: {
+            id: "text-editor",
+            title: "Enter transformation function.",
+            format: "json"
+        },
+        value: "function transform(content) { return content; }",
+        validate: validation.required,
+        order: 1,
+        optional: true
+    },
+    ResultVariable: {
+        description: "The package variable to store result.",
+        category: "Response",
+        type: { id: "variable" },
+        order: 2
+    }
+};
+
+function getRows(data) {
+    return data.replace("\r\n", "\n").split("\n").filter(function (elem) { return !!elem; });
+}
+
+function getKeyValue(row, delimiter) {
+    try {
+        var delimiterIndex = row.indexOf(delimiter);
+
+        return [row.substring(0, delimiterIndex).trim(), row.substring(delimiterIndex + 1).trim()];
+    }
+    catch (ex) { }
+}
+
+function getObject(variables, strValue, delimiter, parameterName) {
+    var strReplaced = utils.replaceVariableValues(variables, strValue),
+        rows = getRows(strReplaced),
+        result = {};
+
+    for (var i in rows) {
+        var keyValue = getKeyValue(rows[i], delimiter);
+
+        if (!keyValue[0]) {
+            console.error("Parameter " + parameterName + ". There is no key provided in this row: \"" + rows[i] + "\".");
+        }
+
+        if (keyValue)
+            result[keyValue[0]] = keyValue[1];
+    }
+    return result;
+}
+
+function getJSON(variables, strValue) {
+    var strReplaced = utils.replaceVariableValues(variables, strValue);
+    return eval("(" + strReplaced + ")");
+}
+
+task.run = function () {
+
+//https://www.googleapis.com/drive/v3/files/1fAfwIkcicSK-NKgc2dMKpN5QoUuSeLQi27yjPpUMops/export?mimeType=application/pdf&key=AIzaSyDmuVoE2vKrb0-jo6dvLW7fcum6z6rSl2A
+var fileId = task.variables.VarNewTemplateID.value;
+    task.parameters.Url.value = "https://www.googleapis.com/drive/v3/files/" + fileId + "/export?mimeType=application/pdf&key=AIzaSyDmuVoE2vKrb0-jo6dvLW7fcum6z6rSl2A";
+
+    var connection,
+        variables = this.variables;
+
+    if (this.parameters.RestConnection.value) {
+        connection = this.connections[this.parameters.RestConnection.value].acquire();
+        connection.connect();
+    }
+    else {
+        connection = new RestConnection();
+    }
+
+    try {
+        var req = {
+            url: utils.replaceVariableValues(variables, this.parameters.Url.value),
+            method: this.parameters.Method.value
+        };
+
+        if (this.parameters.Cookies.value)
+            req.cookie = getObject(variables, this.parameters.Cookies.value, "=", "Cookies");
+
+        if (this.parameters.Headers.value)
+            req.headers = getObject(variables, this.parameters.Headers.value, ":", "Headers");
+
+        if (this.parameters.Query.value)
+            req.query = getObject(variables, this.parameters.Query.value, "=", "Query");
+
+        if (this.parameters.Parameters.value)
+            req.parameters = getObject(variables, this.parameters.Parameters.value, "=", "Parameters");
+
+        if (this.parameters.Body.value) {
+            var testWholeVar = /@\[(.*?)\]/g,
+                rawBody = this.parameters.Body.value,
+                regExInfo = testWholeVar.exec(rawBody);
+
+            if (regExInfo && regExInfo.index === 0 && testWholeVar.lastIndex === rawBody.length) {
+                // The Body parameter contains description of a single variable
+                var value = this.variables[regExInfo[1]].value;
+
+                if (value.constructor.name === "ClrStream") {
+                    // the variable contains a stream
+                    value = value.readAll();
+                }
+                body = { content: value };
+            }
+            else {
+                body = { content: utils.replaceVariableValues(variables, this.parameters.Body.value) };
+            }
+
+            if (this.parameters.ContentType.value)
+                body.contentType = this.parameters.ContentType.value;
+            req.body = body;
+        }
+
+        if (this.parameters.Files.value) {
+            var File = getClrType("System.IO.File"),
+                fileNames = this.parameters.Files.value.split("|"),
+                files = [];
+
+            for (var i in fileNames) {
+                var fileName = fileNames[i],
+                    buff = File.ReadAllBytes(fileName),
+                    fileInfo = { name: fileName, content: buff };
+
+                files.push(fileInfo);
+            }
+
+            req.file = files;
+        }
+
+        var res = connection.execute(req);
+
+        if (this.parameters.ResultVariable.value) {
+            var transformFunc = getJSON(variables, this.parameters.Transform.value),
+                resTransformed = transformFunc(res);
+
+            if (!resTransformed.byteLength && typeof resTransformed === "object")
+                resTransformed = JSON.stringify(resTransformed);
+            this.variables[this.parameters.ResultVariable.value].value = resTransformed;
+
+           
+
+        }
+    }
+    finally {
+        connection.close();
+    }
+};
+]]></JavaScriptCode>
+        </JavaScriptData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Thunk List Source"
+      DTS:CreationName="CozyRoc.JavaScriptTask"
+      DTS:Description="JavaScript Task"
+      DTS:DTSID="{342A5FB1-0E8D-48D9-821A-75E7B48DEB70}"
+      DTS:ExecutableType="CozyRoc.JavaScriptTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Thunk List Source"
+      DTS:TaskContact="JavaScript Task; COZYROC LLC; SSIS+; © 2006-2020 COZYROC LLC; All Rights Reserved; http://www.cozyroc.com/;"
+      DTS:ThreadHint="0">
+      <DTS:Variables>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:DTSID="{47164749-C0E1-4239-AE7C-10A5ECFD129F}"
+          DTS:IncludeInDebugDump="2345"
+          DTS:Namespace="User"
+          DTS:ObjectName="_ContentType">
+          <DTS:VariableValue
+            DTS:DataType="8">application/json</DTS:VariableValue>
+        </DTS:Variable>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:DTSID="{896E7851-5403-4078-9700-8AB2E2A98D78}"
+          DTS:IncludeInDebugDump="2345"
+          DTS:Namespace="User"
+          DTS:ObjectName="_Method">
+          <DTS:VariableValue
+            DTS:DataType="8">POST</DTS:VariableValue>
+        </DTS:Variable>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:DTSID="{269C7F77-8C86-4E49-8BC0-DF52A5238B1D}"
+          DTS:IncludeInDebugDump="2345"
+          DTS:Namespace="User"
+          DTS:ObjectName="_Parameters">
+          <DTS:VariableValue
+            DTS:DataType="8"
+            xml:space="preserve"></DTS:VariableValue>
+        </DTS:Variable>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:DTSID="{E7B9245B-A296-4B68-A353-98063957FCED}"
+          DTS:IncludeInDebugDump="2345"
+          DTS:Namespace="User"
+          DTS:ObjectName="_RestConnection">
+          <DTS:VariableValue
+            DTS:DataType="8">{6B1BC558-252B-4D26-A741-948348B5B4B0}</DTS:VariableValue>
+        </DTS:Variable>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:DTSID="{5F3778D8-6751-43D9-8DE3-817EE2ECAE25}"
+          DTS:IncludeInDebugDump="2345"
+          DTS:Namespace="User"
+          DTS:ObjectName="_ThunkListSource">
+          <DTS:VariableValue
+            DTS:DataType="8">@name=Asad Rauf
+@inquiry= Ticket
+@timeframe= 3
+@assistant = support@cozyroc.com
+@authority = The COZYROC Team</DTS:VariableValue>
+        </DTS:Variable>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:DTSID="{DF5A093C-A606-438C-B2F3-992EFF59B92E}"
+          DTS:IncludeInDebugDump="2345"
+          DTS:Namespace="User"
+          DTS:ObjectName="_Transform">
+          <DTS:VariableValue
+            DTS:DataType="8">function transform(content) { return content; }</DTS:VariableValue>
+        </DTS:Variable>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:DTSID="{045C2AA1-6528-4997-B8B1-226991C549B4}"
+          DTS:IncludeInDebugDump="2345"
+          DTS:Namespace="User"
+          DTS:ObjectName="_Url">
+          <DTS:VariableValue
+            DTS:DataType="8">https://docs.googleapis.com/v1/documents/1fAfwIkcicSK-NKgc2dMKpN5QoUuSeLQi27yjPpUMops:batchUpdate</DTS:VariableValue>
+        </DTS:Variable>
+      </DTS:Variables>
+      <DTS:ObjectData>
+        <JavaScriptData
+          Expression=""
+          Validation=""
+          PackageConnection=""
+          JavaScriptTaskLink="">
+          <JavaScriptCode><![CDATA[// Documentation: http://www.cozyroc.com/ssis/script-rest-web-service-request-task
+
+/* Copyright (c) 2006-2019 COZYROC LLC
+ 
+ Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated 
+ documentation files (the "Software"), to deal in the Software without restriction, including without limitation 
+ the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and 
+ to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+ 
+ The above copyright notice and this permission notice shall be included in all copies or substantial portions of the 
+ Software.
+ 
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE 
+ WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR 
+ COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR 
+ OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+*/
+
+require("underscore.js");
+require("validation.js");
+require("utils.js");
+
+task.parameters = {
+    RestConnection: {
+        description: "Optional REST connection for specifying authentication method, base URL, proxy and other settings.",
+        category: "Request",
+        type: { id: "connection", connectionTypes: "REST" },
+        order: 1
+    },
+    Method: {
+        description: "The request method.",
+        category: "Request",
+        type: { id: "list", values: ["GET", "POST", "PUT", "DELETE", "HEAD", "OPTIONS", "PATCH"] },
+        value: "GET",
+        order: 3
+    },
+    Url: {
+        description: "The request URL.",
+        category: "Request",
+        validate: validation.required,
+        order: 2
+    },
+    Cookies: {
+        description: "The request cookies. Syntax is [name]=[value]. Each item in on a new line. Alternatively, a 'Cookie' header can be specified directly in the 'Headers' parameter.",
+        category: "Request",
+        type: {
+            id: "text-editor",
+            title: "Enter cookies.",
+            format: "plain"
+        },
+        order: 4,
+        optional: true
+    },
+    Headers: {
+        description: "The request headers. Syntax is [name]:[value]. Multiple headers are separated with a newline.",
+        category: "Request",
+        type: {
+            id: "text-editor",
+            title: "Enter headers.",
+            format: "plain"
+        },
+        order: 5
+    },
+    Query: {
+        description: "The request query string parameters. Syntax is [name]=[value]. Multiple query string parameters are separated with newline.",
+        category: "Request",
+        type: {
+            id: "text-editor",
+            title: "Enter query string parameters.",
+            format: "plain"
+        },
+        order: 6
+    },
+    Parameters: {
+        description: "The request body parameters. Syntax is [name]=[value]. Multiple body parameters are separated with newline. When used the HTTP Content-Type becomes \"application/x-www-form-urlencoded\".",
+        category: "Request",
+        type: {
+            id: "text-editor",
+            title: "Enter body parameters.",
+            format: "plain"
+        },
+        order: 7
+    },
+    ContentType: {
+        description: "The Media type of the body of the request. For example: \"text/html\", \"application/json\".",
+        category: "Request",
+        order: 8
+    },
+    Body: {
+        description: "The request body.",
+        category: "Request",
+        type: {
+            id: "text-editor",
+            title: "Enter body.",
+            format: "plain"
+        },
+        order: 9
+    },
+    Files: {
+        description: "Files to upload.",
+        category: "Request",
+        type: {
+            id: "file-local",
+            multiple: "true"
+        },
+        order: 10
+    },
+    Transform: {
+        description: "Specify transformation. underscore.js functions are available by default.",
+        category: "Response",
+        type: {
+            id: "text-editor",
+            title: "Enter transformation function.",
+            format: "json"
+        },
+        value: "function transform(content) { return content; }",
+        validate: validation.required,
+        order: 1,
+        optional: true
+    },
+    ResultVariable: {
+        description: "The package variable to store result.",
+        category: "Response",
+        type: { id: "variable" },
+        order: 2
+    }, ThunkListSource: {
+        description: "The request body parameters. Syntax is [key]=[value]. Multiple body parameters are separated with newline. ",
+        category: "Thunk List",
+        type: {
+            id: "text-editor",
+            title: "Enter body parameters.",
+            format: "plain"
+        },
+        order: 1
+    }
+};
+
+// added this ThunkListSource paramter.
+
+function getRows(data) {
+    return data.replace("\r\n", "\n").split("\n").filter(function (elem) { return !!elem; });
+}
+
+function getKeyValue(row, delimiter) {
+    try {
+        var delimiterIndex = row.indexOf(delimiter);
+
+        return [row.substring(0, delimiterIndex).trim(), row.substring(delimiterIndex + 1).trim()];
+    }
+    catch (ex) { }
+}
+
+//Create this function to generate list of replaceAllText requests objects from the provided paramter value as key=value pair.
+
+
+function getThunkObject(variables, strValue, delimiter, parameterName) {
+    var strReplaced = utils.replaceVariableValues(variables, strValue),
+        rows = getRows(strReplaced),
+        result = {requests:[]};
+
+    for (var i in rows) {
+        var keyValue = getKeyValue(rows[i], delimiter);
+
+        if (!keyValue[0]) {
+            console.error("Parameter " + parameterName + ". There is no key provided in this row: \"" + rows[i] + "\".");
+        }
+
+        if (keyValue) {
+            result.requests.push({
+                "replaceAllText": {
+                    "replaceText": keyValue[1],
+                    "containsText": {
+                        "matchCase": false,
+                        "text": keyValue[0]
+                    }
+                }
+            });
+
+        }
+    }
+    return result;
+}
+
+function getObject(variables, strValue, delimiter, parameterName) {
+    var strReplaced = utils.replaceVariableValues(variables, strValue),
+        rows = getRows(strReplaced),
+        result = {};
+
+    for (var i in rows) {
+        var keyValue = getKeyValue(rows[i], delimiter);
+
+        if (!keyValue[0]) {
+            console.error("Parameter " + parameterName + ". There is no key provided in this row: \"" + rows[i] + "\".");
+        }
+
+        if (keyValue)
+            result[keyValue[0]] = keyValue[1];
+    }
+    return result;
+}
+
+function getJSON(variables, strValue) {
+    var strReplaced = utils.replaceVariableValues(variables, strValue);
+    return eval("(" + strReplaced + ")");
+}
+
+task.run = function () {
+
+
+//https://docs.googleapis.com/v1/documents/1fAfwIkcicSK-NKgc2dMKpN5QoUuSeLQi27yjPpUMops:batchUpdate
+ var fileId = task.variables.VarNewTemplateID.value;
+    task.parameters.Url.value = "https://docs.googleapis.com/v1/documents/" + fileId + ":batchUpdate";
+
+    var connection,
+        variables = this.variables;
+
+    if (this.parameters.RestConnection.value) {
+        connection = this.connections[this.parameters.RestConnection.value].acquire();
+        connection.connect();
+    }
+    else {
+        connection = new RestConnection();
+    }
+
+    try {
+        var req = {
+            url: utils.replaceVariableValues(variables, this.parameters.Url.value),
+            method: this.parameters.Method.value
+        };
+
+        if (this.parameters.Cookies.value)
+            req.cookie = getObject(variables, this.parameters.Cookies.value, "=", "Cookies");
+
+        if (this.parameters.Headers.value)
+            req.headers = getObject(variables, this.parameters.Headers.value, ":", "Headers");
+
+        if (this.parameters.Query.value)
+            req.query = getObject(variables, this.parameters.Query.value, "=", "Query");
+
+        if (this.parameters.Parameters.value)
+            req.parameters = getObject(variables, this.parameters.Parameters.value, "=", "Parameters");
+
+			//Reteriving param value and transforming it to use as a body request.
+        if (this.parameters.ThunkListSource.value)
+            this.parameters.Body.value = JSON.stringify( getThunkObject(variables, this.parameters.ThunkListSource.value, "=", "ThunkListSource"));
+
+
+        if (this.parameters.Body.value) {
+            var testWholeVar = /@\[(.*?)\]/g,
+                rawBody = this.parameters.Body.value,
+                regExInfo = testWholeVar.exec(rawBody);
+
+            if (regExInfo && regExInfo.index === 0 && testWholeVar.lastIndex === rawBody.length) {
+                // The Body parameter contains description of a single variable
+                var value = this.variables[regExInfo[1]].value;
+
+                if (value.constructor.name === "ClrStream") {
+                    // the variable contains a stream
+                    value = value.readAll();
+                }
+                body = { content: value };
+            }
+            else {
+                body = {
+                    content: utils.replaceVariableValues(variables, this.parameters.Body.value)
+                    //content:  getThunkObject(variables, this.parameters.ThunkListSource.value, "=", "ThunkListSource") 
+                };
+            }
+
+            if (this.parameters.ContentType.value)
+                body.contentType = this.parameters.ContentType.value;
+            req.body = body;
+        }
+
+        if (this.parameters.Files.value) {
+            var File = getClrType("System.IO.File"),
+                fileNames = this.parameters.Files.value.split("|"),
+                files = [];
+
+            for (var i in fileNames) {
+                var fileName = fileNames[i],
+                    buff = File.ReadAllBytes(fileName),
+                    fileInfo = { name: fileName, content: buff };
+
+                files.push(fileInfo);
+            }
+
+            req.file = files;
+        }
+
+        var res = connection.execute(req);
+
+        if (this.parameters.ResultVariable.value) {
+            var transformFunc = getJSON(variables, this.parameters.Transform.value),
+                resTransformed = transformFunc(res);
+
+            if (!resTransformed.byteLength && typeof resTransformed === "object")
+                resTransformed = JSON.stringify(resTransformed);
+            this.variables[this.parameters.ResultVariable.value].value = resTransformed;
+        }
+    }
+    finally {
+        connection.close();
+    }
+};
+]]></JavaScriptCode>
+        </JavaScriptData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Upload Exported file back to Google Drive"
+      DTS:CreationName="CozyRoc.FileTransferTask"
+      DTS:Description="File Transfer Task"
+      DTS:DTSID="{A8FA673E-A311-4F4D-B053-65670CB482AD}"
+      DTS:ExecutableType="CozyRoc.FileTransferTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Upload Exported file back to Google Drive"
+      DTS:TaskContact="File Transfer Task; COZYROC LLC; SSIS+; © 2006-2020 COZYROC LLC; All Rights Reserved; http://www.cozyroc.com/;"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <FileTransferData
+          Connection="{AB88362D-A03E-44D4-AE8C-48001DC6AC87}"
+          StopOnFailure="True"
+          Action="SendFiles"
+          IsLocalVariable="False"
+          Local="{661A73FC-5867-40D0-A770-BB8CDCB38702}"
+          IsRemoteVariable="False"
+          Remote="UploadedPdf/"
+          OverwriteExisting="True"
+          Result=""
+          ExtendedRemoteFileInfo="True"
+          IsRemoteWildcard="True"
+          NoFilesFail="True"
+          IncludeSubfolders="False"
+          IsFilterVariable="False"
+          Filter=""
+          RemotePathSeparator="/" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Writing API response locally"
+      DTS:CreationName="CozyRoc.JavaScriptTask"
+      DTS:Description="JavaScript Task"
+      DTS:DTSID="{B8FA95C6-1F39-44C7-A9C3-1CB3ACEAF39A}"
+      DTS:ExecutableType="CozyRoc.JavaScriptTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Writing API response locally"
+      DTS:TaskContact="JavaScript Task; COZYROC LLC; SSIS+; © 2006-2020 COZYROC LLC; All Rights Reserved; http://www.cozyroc.com/;"
+      DTS:ThreadHint="0">
+      <DTS:Variables>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:DTSID="{485D1A6D-61E8-44E2-A776-42035D539FAA}"
+          DTS:IncludeInDebugDump="2345"
+          DTS:Namespace="User"
+          DTS:ObjectName="_OutputFile">
+          <DTS:VariableValue
+            DTS:DataType="8">{661A73FC-5867-40D0-A770-BB8CDCB38702}</DTS:VariableValue>
+        </DTS:Variable>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:DTSID="{2A139888-321E-4693-8CE5-F02A9C2B2644}"
+          DTS:IncludeInDebugDump="2345"
+          DTS:Namespace="User"
+          DTS:ObjectName="_StringVariable">
+          <DTS:VariableValue
+            DTS:DataType="8">User::VarObjType</DTS:VariableValue>
+        </DTS:Variable>
+      </DTS:Variables>
+      <DTS:ObjectData>
+        <JavaScriptData
+          Expression=""
+          Validation=""
+          PackageConnection=""
+          JavaScriptTaskLink="">
+          <JavaScriptCode><![CDATA[// Documentation: http://www.cozyroc.com/ssis/script-variable-file-task
+
+/* Copyright (c) 2006-2020 COZYROC LLC
+  
+ Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated 
+ documentation files (the "Software"), to deal in the Software without restriction, including without limitation 
+ the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and 
+ to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+  
+ The above copyright notice and this permission notice shall be included in all copies or substantial portions of the 
+ Software.
+  
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE 
+ WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR 
+ COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR 
+ OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+*/
+
+require("validation.js");
+
+
+//StringVariable : here removed the variableType="string" so that I can select any type of variable
+
+task.parameters = {
+    StringVariable: {
+        description: "Select an object type variable which contents would be saved to a file.",
+        order: 1,
+        type: { id: "variable" }, 
+        validate: validation.required
+    },
+    OutputFile: {
+        description: "The file connection where the variable contents would be saved.",
+        order: 2,
+        type: { id: "connection", connectionTypes: "FILE" },
+        validate: validation.required
+    }
+};
+
+task.run = function () {
+
+
+	
+	var  FileMode = getClrType("System.IO.FileMode");
+    var File = getClrType("System.IO.File"),
+        filePath = this.connections[this.parameters.OutputFile.value].acquire(),
+        contents = this.variables[this.parameters.StringVariable.value].value;
+
+		//The variable named 'StringVariable' holds an object of byteArray 
+    var buffer = this.variables[this.parameters.StringVariable.value].value;
+    var fileStream = File.Open(filePath, FileMode.Create);
+
+    fileStream.write(buffer, 0, buffer.byteLength);
+    fileStream.close();
+
+
+    console.info("Wrote " + contents.Length + " characters in " + filePath);
+};]]></JavaScriptCode>
+        </JavaScriptData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{376BED7D-C61B-44E6-AB94-3A1E9103B7DE}"
+      DTS:From="Package\Rest API call to Google Drive"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Writing API response locally" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{7EE621E4-3DC4-4D4E-A729-4B8D3BCD12E4}"
+      DTS:From="Package\Writing API response locally"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\Upload Exported file back to Google Drive" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{4E45D282-C351-4ED7-A00A-0B259845E177}"
+      DTS:From="Package\Thunk List Source"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 2"
+      DTS:To="Package\Rest API call to Google Drive" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 3]"
+      DTS:CreationName=""
+      DTS:DTSID="{F1A5C399-A854-49D2-98C9-1B2702C234D8}"
+      DTS:From="Package\JavaScript Task"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 3"
+      DTS:To="Package\Thunk List Source" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="152,42.6666666666667"
+          Id="Package\JavaScript Task"
+          TopLeft="36.7499995343387,133.207531197752" />
+        <NodeLayout
+          Size="214.666666666667,42.6666666666667"
+          Id="Package\Rest API call to Google Drive"
+          TopLeft="257.916662823409,23.3999995815754" />
+        <NodeLayout
+          Size="164,42.6666666666667"
+          Id="Package\Thunk List Source"
+          TopLeft="65.8333323523402,51.5666657445828" />
+        <NodeLayout
+          Size="276,42.6666666666667"
+          Id="Package\Upload Exported file back to Google Drive"
+          TopLeft="235.416663158685,193.26666321079" />
+        <NodeLayout
+          Size="210.666666666667,42.6666666666667"
+          Id="Package\Writing API response locally"
+          TopLeft="264.999996051192,107.466664745013" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="367.791662770634,66.0666662482421">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,41.3999984967709"
+              Start="0,0"
+              End="0,33.8999984967709">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,33.8999984967709" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="371.874996271605,150.13333141168">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,43.1333317991103"
+              Start="0,0"
+              End="0,35.6333317991103">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,35.6333317991103" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="229.83333235234,72.8999990779161">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="28.0833304710688,-28.1666661630074"
+              Start="0,0"
+              End="20.5833304710688,-28.1666661630074">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="10.0416652355344,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="10.0416652355344,0"
+                    Point2="14.0416652355344,0"
+                    Point3="14.0416652355344,-4" />
+                  <mssgle:LineSegment
+                    End="14.0416652355344,-24.1666661630074" />
+                  <mssgle:CubicBezierSegment
+                    Point1="14.0416652355344,-24.1666661630074"
+                    Point2="14.0416652355344,-28.1666661630074"
+                    Point3="18.0416652355344,-28.1666661630074" />
+                  <mssgle:LineSegment
+                    End="20.5833304710688,-28.1666661630074" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 3]"
+          TopLeft="112.749999534339,133.207531197752">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="35.0833328180015,-38.974198786503"
+              Start="0,0"
+              End="35.0833328180015,-31.474198786503">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,-15.4870993932515" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,-15.4870993932515"
+                    Point2="0,-19.4870993932515"
+                    Point3="4,-19.4870993932515" />
+                  <mssgle:LineSegment
+                    End="31.0833328180015,-19.4870993932515" />
+                  <mssgle:CubicBezierSegment
+                    Point1="31.0833328180015,-19.4870993932515"
+                    Point2="35.0833328180015,-19.4870993932515"
+                    Point3="35.0833328180015,-23.4870993932515" />
+                  <mssgle:LineSegment
+                    End="35.0833328180015,-31.474198786503" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

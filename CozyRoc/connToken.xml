@@ -1,0 +1,16 @@
+<RestToken xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Configuration>GDriveRestConn</Configuration>
+  <Token>ioRiGl7gNiZZHC0WUhi+JvE3Zt1Zeaxg8lYpy2irWdwSa9o4JCc8dEt2szXV1atU8/XB/hCAyWhX2gJLspzvbi+ZAgBFKjI2eM6st2RUYH4rghQHKLup9NJ/ptyL44/NUQPuWU5NNA9DZ7HLR5In3KHlIo5iKVEfwb/RyvlV9c4D9PaD67qipPrYrIMZVKbiJQpvEp6YZC0fvXfiiY9Ds1VDJf2eaUV+0F6KABfyLCNSCwMEkkKXNRuSImRm/aeKfiLJ8rMWLJS/9cs/TV+ykui188jT3wOWUEExSetHET2LwQAUaMcpT9h8w8AjCvwqA0ItQEgwrPs3vJC1+LJ9129LU8nhX1IudMA9yrdPpTlQ366jt8f0/sza7hsbBDUkzzP5JS98aNUpZaiw5rhqjlG+ATUHg6uIHrFSHEE6dmEBr1uMQaZfiI48D7QcNZV9s7KPntymFtU=</Token>
+  <RefreshToken>G/bM/wLQcOmqTC9FQkv3R7i9LqmE1tt9FZcBmQOLUPl+QFcrgo9NAkhK59wrC6iiEclKieQ4iXEN3dNxjK0jUJU+Z2EE2cwHXUt+RXSchsg7BP2MlUhIl8ueA1t9FDcMbnhJHjFznICTxvbklV3kZYATSPPH5ZKb66uElNV3fLt3dDbNjMe0CyBoCoDBvReu+kigZjQoqFu9LyBBSzJXAcb4xbvvfaHdC5+QxBaDWcpVLG8rdf52r4G6egbQaxUH8yfJWgKG6Hy8QVMahI0r/Q==</RefreshToken>
+  <Expiration>2020-07-21T16:48:56.876Z</Expiration>
+  <Parameters>
+    <item>
+      <key>
+        <string>Scope</string>
+      </key>
+      <value>
+        <string>https://www.googleapis.com/auth/drive https://www.googleapis.com/auth/drive.file https://www.googleapis.com/auth/drive.readonly</string>
+      </value>
+    </item>
+  </Parameters>
+</RestToken>

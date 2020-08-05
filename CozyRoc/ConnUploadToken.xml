@@ -1,0 +1,16 @@
+<RestToken xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Configuration>Google Drive</Configuration>
+  <Token>6+4omJtx7/ENiggde+6ZNgCUDa/RxoAIyUKZ9bAr45Sc3lATBMAxlIC0Sc5Bhxruz55ke+3+a9BLYwEFk2b3zBgHtLkql5smjXzaF9/Bt2aRdLDQXW9A0CwC0GzDtT28ap4Ftzqgy+vI9vNUeNgfk5PZhMclYCmT8dUEuaxdKATyHwoT4m9e2oZroYX2c5qvbUjI+FQDZQfvUSsO/vBaoiJol1SScVXRvCBA6NryOSPaPyZRQHmbzsR21mym61ApQlxbgPBCs2Eh2oe2Ba46cyQcZeJrOG1Baonmcu+5Vs+xcdvh/SbXoRkRIAt62uSMu3SGR+5tIZLBu7Rv3uJV8Q+4P9p5B0TTSV681nKKoFAttowgnIXhZJe8eh5UySOLaevJo2Wdx/MY9q2OgKk1ZpPCvqZ7gm40sh4sF2hSbpzfNSFwwQ55jv3m+ati2+teBkzfjlFmRaI=</Token>
+  <RefreshToken>x8FUJKVJ5ap3Yb6J8R2fyhFySVpPtvPv+jwlIdSR1Cc3KeBeLrvd2S5aCHp98woxCGjn50uZHrKt2XHUi57V8SA7nz8eLF3GpWlrXFMCdX3sxe/9GYLB5dBoI+d94fZrFXnlxoASmXIc9A0MQaR5mxlvSbDg7oYa0qLbVxGNOkQrfAAwjodlvI7QbZUkErWFVAdegF3G+ptRshP+CGiyUddBAHbRezqLxAkD+rltz+/ydc2Vu4IXfaKkdz9TsX/1fuuM69JEIuB0tJfsKr9Phw==</RefreshToken>
+  <Expiration>2020-07-21T17:01:41.876Z</Expiration>
+  <Parameters>
+    <item>
+      <key>
+        <string>Scope</string>
+      </key>
+      <value>
+        <string>https://www.googleapis.com/auth/drive https://www.googleapis.com/auth/drive.readonly https://www.googleapis.com/auth/drive.appfolder https://www.googleapis.com/auth/drive.file https://www.googleapis.com/auth/drive.install https://www.googleapis.com/auth/drive.metadata https://www.googleapis.com/auth/drive.metadata.readonly https://www.googleapis.com/auth/drive.photos.readonly https://www.googleapis.com/auth/drive.scripts</string>
+      </value>
+    </item>
+  </Parameters>
+</RestToken>
